@@ -44,18 +44,17 @@ class TestContact(unittest.TestCase):
 
   def test_contact_exist(self):
     test_contact = Contact("Test", "user", "0715506018", "test@user.com")
-    self.new_contact.save_contqact()
+    self.new_contact.save_contact()
     contact_exist = Contact.contact_exist("0715506018")
-
     self.assertTrue(contact_exist)
     
   def test_display_all_contacts(self):
     self.assertEqual(Contact.display_contacts(),Contact.contact_list)
 
   def test_copy_email(self):
+    test_contact = Contact("kaka", "mama", "0748939901", "kakama@user.com")
     self.new_contact.save_contact()
-    Contact.copy_email("0715506018")
-
+    Contact.copy_email("0748939901")
     self.assertEqual(self.new_contact.email, pyperclip.paste())
 
 if __name__ == '__main__':
